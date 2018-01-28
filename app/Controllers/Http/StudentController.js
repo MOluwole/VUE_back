@@ -19,6 +19,14 @@ class StudentLoginController {
     // console.log(student_info.length)
 
     if (student_info.length > 0) {
+      const user_logs = await Database.from('user_logs')
+        .where({'matric_num': studentInfo.matric_num});
+
+      if(user_logs.length > 0){
+        if(user_logs[0].status === 1){
+          return response.json({'message': 'You have already completed the exam. Please Leave the Hall', 'success': 0})
+        }
+      }
       result = {'data': student_info, 'success': 1};
     }
     else {
