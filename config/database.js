@@ -58,15 +58,15 @@ module.exports = {
   // },
 
   // mysql://:@/?reconnect=true
-  // mysql://:@/?reconnect=true
+
   mysql: {
     client: 'mysql',
     connection: {
       host: Env.get('DB_HOST', 'us-cdbr-iron-east-05.cleardb.net'),
       port: Env.get('DB_PORT', ''),
-      user: Env.get('DB_USER', 'bca205c4949b30'),
-      password: Env.get('DB_PASSWORD', '12a8807d'),
-      database: Env.get('DB_DATABASE', 'heroku_2c27bfc98d6d047')
+      user: Env.get('DB_USER', 'b053facd3627d8'),
+      password: Env.get('DB_PASSWORD', 'c08bd69e'),
+      database: Env.get('DB_DATABASE', 'heroku_fee0d34304fdd7a')
     },
     debug: Env.get('DB_DEBUG', false)
   },

@@ -9,6 +9,9 @@ class UserLogSchema extends Schema {
       table.string('matric_num').nullable();
       table.integer('status').nullable();
       table.integer('time_remain').nullable();
+      table.string('course').nullable();
+      table.string('level').nullable();
+      table.string('programme').nullable();
       table.timestamps()
     })
   }

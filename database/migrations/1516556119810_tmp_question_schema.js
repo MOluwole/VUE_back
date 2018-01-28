@@ -12,6 +12,7 @@ class TmpQuestionSchema extends Schema {
       table.string('correct_answer').nullable();
       table.string('level').nullable();
       table.string('programme').nullable();
+      table.string('course').nullable();
       table.timestamps()
     })
   }
