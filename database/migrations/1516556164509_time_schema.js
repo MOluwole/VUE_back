@@ -7,6 +7,8 @@ class TimeSchema extends Schema {
     this.create('times', (table) => {
       table.increments();
       table.integer('tme').nullable();
+      table.string('course').nullable();
+      table.string('qtotal').nullable();
       table.timestamps()
     })
   }
