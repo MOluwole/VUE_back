@@ -300,7 +300,7 @@ class AdminController {
   }
 
   async insertDept({request, response}) {
-    let dept = request.only(['dept'])
+    let dept = request.only(['dept']);
 
     let dept_data = await Database.from('departments')
       .where({'dept': dept.dept});
@@ -316,7 +316,7 @@ class AdminController {
 
   async retrieveDept({request, response}){
     let dept = await Dept.all();
-    let result = {}
+    let result = {};
     if(dept.length <= 0){
       result = {'message': 'No Department Uploaded yet', 'success': 0}
     }
@@ -353,7 +353,7 @@ class AdminController {
     course_data.code = data.code;
     course_data.dept = data.dept;
     course_data.level = data.level;
-    course_data.programme = data.programme
+    course_data.programme = data.programme;
 
     await course_data.save();
 
@@ -366,17 +366,103 @@ class AdminController {
   }
 
   async retrievecoursesingle({request, response}){
-    let data = request.only(['dept', 'programme', 'level'])
-    let result = {}
+    let data = request.only(['dept', 'programme', 'level']);
+    let result = {};
 
     const course_data = await Database.from('courses')
-      .where({'dept': data.dept, 'programme': data.programme, 'level': data.level})
+      .where({'dept': data.dept, 'programme': data.programme, 'level': data.level});
 
     if(course_data.length > 0){
       result = {'data': course_data, 'success': 1}
     }
     else{
       result = {'message': 'No course was found', 'success': 0}
+    }
+
+    return response.json(result)
+  }
+
+  //Result Generation
+  async result({request, response}) {
+    const data = request.only(['dept', 'course', 'level', 'programme']);
+
+    const students_info = await Database.from('students')
+      .where({'dept': data.dept, 'level': data.level, 'programme': data.programme});
+
+    let result = {};
+    let result_data = [];
+
+    const total = await Database.from('times')
+      .where({'course': data.course}).select('qtotal');
+
+    if (students_info.length > 0) {
+      if (total != null) {
+        for (let i = 0; i < students_info.length; i++) {
+          const matric_num = students_info[i]['matric_num'];
+          const res = await Database.from('tmp_questions')
+            .where({'matric_num': matric_num, 'course': data.course});
+          let score = 0;
+          if (res.length > 0) {
+            for (let j = 0; j < res.length; j++) {
+              if (res[j]['answer'].toUpperCase() === res[j]['correct_answer'].toUpperCase()) {
+                score += 1;
+              }
+            }
+            result_data.push({'matric_num': matric_num, 'score': score, 'total': total})
+          }
+          else {
+            result_data.push({'matric_num': matric_num, 'score': 'Absent', 'total': total})
+          }
+        }
+      }
+      else {
+        result = {'message': 'No Question Total. Exam has not been prepared yet', 'success': 0}
+      }
+    }
+    else {
+      result = {'message': 'No student Info has been documented yet for the selected parameters', 'success': 0}
+    }
+
+    return response.json(result)
+  }
+
+  async resultall({request, response}) {
+    const data = request.only(['course']);
+
+    const students_info = await Student.all();
+
+    let result = {};
+    let result_data = [];
+
+    const total = await Database.from('times')
+      .where({'course': data.course}).select('qtotal');
+
+    if (students_info.length > 0) {
+      if (total != null) {
+        for (let i = 0; i < students_info.length; i++) {
+          const matric_num = students_info[i]['matric_num'];
+          const res = await Database.from('tmp_questions')
+            .where({'matric_num': matric_num, 'course': data.course});
+          if (res.length > 0) {
+            let score = 0;
+            for (let j = 0; j < res.length; j++) {
+              if (res[j]['answer'].toUpperCase() === res[j]['correct_answer'].toUpperCase()) {
+                score += 1;
+              }
+            }
+            result_data.push({'matric_num': matric_num, 'score': score, 'total': total})
+          }
+          else {
+            result_data.push({'matric_num': matric_num, 'score': 'Absent', 'total': total})
+          }
+        }
+      }
+      else {
+        result = {'message': 'No Question Total. Exam has not been prepared yet', 'success': 0}
+      }
+    }
+    else {
+      result = {'message': 'No student Info has been documented yet', 'success': 0}
     }
 
     return response.json(result)

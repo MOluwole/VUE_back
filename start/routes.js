@@ -45,7 +45,10 @@ Route.group(() => {
 
   Route.post('course', 'AdminController.courses');
   Route.get('course/retrieve', 'AdminController.retrievecourse');
-  Route.get('course/retrieve/single', 'AdminController.retrievecoursesingle')
+  Route.get('course/retrieve/single', 'AdminController.retrievecoursesingle');
+
+  Route.get('result', 'AdminController.result');
+  Route.get('result/all', 'AdminController.resultall')
 }).prefix('api/v1');
 
 
