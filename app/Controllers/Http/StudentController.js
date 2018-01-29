@@ -78,7 +78,6 @@ class StudentLoginController {
              tmp_result[i]['correct_answer'] = "";
              tmp_result[i]['ans'] = "";
            }
-
            result = {'data': tmp_result, 'time': {'hh': hrs, 'mm': min, 'ss': sec}, 'success': 2}
          }
        }
