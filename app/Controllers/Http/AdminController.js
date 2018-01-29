@@ -429,18 +429,21 @@ class AdminController {
   async resultall({request, response}) {
     const data = request.only(['course']);
 
-    const students_info = await Student.all();
-
+    // const students_info = await Student.all();
+    const students_info = await Database.from('students');
     let result = {};
     let result_data = [];
 
     const total = await Database.from('times')
-      .where({'course': data.course}).select('qtotal');
+      .where({'course': data.course});
 
-    if (students_info.length > 0) {
+    // console.log("total: " + students_info.length)
+
+    if (students_info) {
       if (total != null) {
         for (let i = 0; i < students_info.length; i++) {
-          const matric_num = students_info[i]['matric_num'];
+          const matric_num = students_info[i].matric_num;
+          // console.log("matric : " + matric_num)
           const res = await Database.from('tmp_questions')
             .where({'matric_num': matric_num, 'course': data.course});
           if (res.length > 0) {
@@ -450,12 +453,13 @@ class AdminController {
                 score += 1;
               }
             }
-            result_data.push({'matric_num': matric_num, 'score': score, 'total': total})
+            result_data.push({'matric_num': matric_num, 'score': score, 'total': total[0].qtotal})
           }
           else {
-            result_data.push({'matric_num': matric_num, 'score': 'Absent', 'total': total})
+            result_data.push({'matric_num': matric_num, 'score': 'Absent', 'total': total[0].qtotal})
           }
         }
+        result = {'data': result_data, 'success': 1}
       }
       else {
         result = {'message': 'No Question Total. Exam has not been prepared yet', 'success': 0}
