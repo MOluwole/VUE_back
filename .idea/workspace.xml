@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="8a0908f5-2c7e-40a7-8341-8867885f4c71" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/app/Controllers/Http/AdminController.js" afterPath="$PROJECT_DIR$/app/Controllers/Http/AdminController.js" />
       <change beforePath="$PROJECT_DIR$/app/Controllers/Http/StudentController.js" afterPath="$PROJECT_DIR$/app/Controllers/Http/StudentController.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -31,8 +30,8 @@
       <file leaf-file-name="StudentController.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Controllers/Http/StudentController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="55" column="56" lean-forward="true" selection-start-line="55" selection-start-column="56" selection-end-line="55" selection-end-column="56" />
+            <state relative-caret-position="405">
+              <caret line="96" column="0" lean-forward="true" selection-start-line="96" selection-start-column="0" selection-end-line="96" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -280,7 +279,7 @@
       <workItem from="1516857347814" duration="2113000" />
       <workItem from="1516962403265" duration="25415000" />
       <workItem from="1517020046284" duration="3957000" />
-      <workItem from="1517035757470" duration="26239000" />
+      <workItem from="1517035757470" duration="26356000" />
     </task>
     <task id="LOCAL-00001" summary="Changed Migration">
       <created>1517174483789</created>
@@ -303,11 +302,18 @@
       <option name="project" value="LOCAL" />
       <updated>1517204577331</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Order By RAND()">
+      <created>1517210565658</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1517210565658</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="94067000" />
+    <option name="totallyTimeSpent" value="94184000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1366" y="0" width="1440" height="900" extended-state="6" />
@@ -348,7 +354,8 @@
     <MESSAGE value="Changed Migration" />
     <MESSAGE value="New Upload" />
     <MESSAGE value="Add Results" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add Results" />
+    <MESSAGE value="Order By RAND()" />
+    <option name="LAST_COMMIT_MESSAGE" value="Order By RAND()" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -725,8 +732,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Controllers/Http/StudentController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="55" column="56" lean-forward="true" selection-start-line="55" selection-start-column="56" selection-end-line="55" selection-end-column="56" />
+        <state relative-caret-position="405">
+          <caret line="96" column="0" lean-forward="true" selection-start-line="96" selection-start-column="0" selection-end-line="96" selection-end-column="0" />
           <folding />
         </state>
       </provider>

@@ -86,7 +86,7 @@ class StudentLoginController {
 
          const result_query = await Database.from('questions')
            .where({'course': requestInfo.course, 'level': requestInfo.level, 'programme': requestInfo.programme})
-           .orderBy('RAND()').limit(time_query[0].qtotal);
+           .orderByRaw('RAND()').limit(time_query[0].qtotal);
 
          if (result_query.length > 0) {
            let total_sec = parseInt(time_query[0].tme);
