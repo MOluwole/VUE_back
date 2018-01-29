@@ -65,7 +65,7 @@ class StudentLoginController {
          else {
 
            const tmp_result = await Database.from('tmp_questions')
-             .where({'questions.course': requestInfo.course, 'questions.level': requestInfo.level, 'questions.programme': requestInfo.programme})
+             .where({'tmp_questions.matric_num': requestInfo.matric_num, 'questions.course': requestInfo.course, 'questions.level': requestInfo.level, 'questions.programme': requestInfo.programme})
              .innerJoin('questions', 'tmp_questions.question_id', 'questions.id');
 
            let total_sec = parseInt(user_log[0].time_remain.toString());
